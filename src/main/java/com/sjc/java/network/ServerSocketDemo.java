@@ -13,7 +13,7 @@ public class ServerSocketDemo {
 
             // 阻塞（连接阻塞） 接收客户端的连接阻塞
             Socket socket = serverSocket.accept();
-            // 拿到输入流
+            // 拿到输入流（阻塞，read/write阻塞）
             BufferedReader clientIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             // 拿到输出流
              PrintStream printStream = new PrintStream(socket.getOutputStream(),true);
