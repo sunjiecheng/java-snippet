@@ -1,23 +1,34 @@
 package com.sjc.java.bean;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Student implements Serializable {
 
-    private static final long serialVersionUID = -1141533170218097005L;
+    //private static final long serialVersionUID = -1141533170218097005L;
+
 
     // transient是避免序列化字段
-    private transient String name;
+    private String name;
 
     private int age;
 
+    public Student() {
+    }
 
-    private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+
+    private void readObject(ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
         s.defaultReadObject();
         name = (String) s.readObject();
     }
 
-    private void writeObject(java.io.ObjectOutputStream s) throws java.io.IOException {
+    private void writeObject(ObjectOutputStream s) throws java.io.IOException {
         s.defaultWriteObject();
         s.writeObject(name);
     }

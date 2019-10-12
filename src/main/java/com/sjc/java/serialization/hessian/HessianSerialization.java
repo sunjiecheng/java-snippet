@@ -46,8 +46,5 @@ public class HessianSerialization implements Serialization {
         System.out.println(serialize.length);
 
         System.out.println(serialization.deserialize(serialize, Student.class));
-
-
-
     }
 }
